@@ -6,9 +6,10 @@ interface ServiceCardProps {
   title: string;
   startingPrice: string;
   alt: string;
+  imagePosition?: string;
 }
 
-export default function ServiceCard({ image, title, startingPrice, alt }: ServiceCardProps) {
+export default function ServiceCard({ image, title, startingPrice, alt, imagePosition = "object-top" }: ServiceCardProps) {
   return (
     <div className="bg-white rounded-md overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 group">
       <div className="relative h-48 overflow-hidden">
@@ -16,7 +17,7 @@ export default function ServiceCard({ image, title, startingPrice, alt }: Servic
           src={image}
           alt={alt}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className={`object-cover ${imagePosition} group-hover:scale-105 transition-transform duration-500`}
           sizes="(max-width: 768px) 100vw, 33vw"
         />
       </div>

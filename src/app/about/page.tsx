@@ -17,12 +17,12 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 md:h-[500px] rounded-md overflow-hidden">
+            <div className="relative h-[500px] md:h-[650px] rounded-md overflow-hidden">
               <Image
-                src="/images/portrait-1.jpg"
+                src="/images/hero-4.jpg"
                 alt="Maurice Chase — Nashville photographer"
                 fill
-                className="object-cover"
+                className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </div>
