@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Alex_Brush, Lexend_Deca, Petit_Formal_Script } from "next/font/google";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
 import "./globals.css";
 
 const alexBrush = Alex_Brush({
@@ -39,7 +41,9 @@ export default function RootLayout({
       className={`${alexBrush.variable} ${lexendDeca.variable} ${petitFormal.variable}`}
     >
       <body className="font-[family-name:var(--font-lexend)] antialiased">
-        {children}
+        <Navigation />
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );
