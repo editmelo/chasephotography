@@ -16,7 +16,7 @@ export default function ServicesPage() {
       <PageBanner title="Our Services" subtitle="Packages & Pricing" />
 
       {/* Portrait Photography */}
-      <section className="py-20">
+      <section id="portraits" className="py-20 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-12">
             <div className="w-12 h-px bg-orange" />
@@ -34,38 +34,28 @@ export default function ServicesPage() {
       </section>
 
       {/* Wedding Photography */}
-      <section className="bg-tan py-20">
+      <section id="weddings" className="bg-tan py-20 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-12">
             <div className="w-12 h-px bg-orange" />
             <p className="section-label">Wedding Photography</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {weddingPackages.map((pkg) => (
-              <div key={pkg.name} className="bg-white rounded-md p-6 shadow-sm">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="text-lg font-medium text-brown-dark">{pkg.name}</h3>
-                    <p className="text-brown-text text-sm mt-1">{pkg.duration}</p>
-                  </div>
-                  <p className="text-2xl font-semibold text-orange">${pkg.price.toLocaleString()}</p>
-                </div>
-                <ul className="mt-4 space-y-2">
-                  {pkg.features.map((feature) => (
-                    <li key={feature} className="text-brown-text text-sm flex items-start gap-2">
-                      <span className="text-orange mt-0.5">&#10003;</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <PricingCard
+                key={pkg.name}
+                name={pkg.name}
+                price={pkg.price}
+                features={pkg.features}
+                popular={pkg.name === "Elegant Wedding"}
+              />
             ))}
           </div>
         </div>
       </section>
 
       {/* Event Photography */}
-      <section className="py-20">
+      <section id="events" className="py-20 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center gap-4 mb-12">
             <div className="w-12 h-px bg-orange" />

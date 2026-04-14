@@ -1,9 +1,32 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageBanner from "@/components/page-banner";
 import ContactForm from "@/components/contact-form";
 import FaqAccordion from "@/components/faq-accordion";
+import SectionHeading from "@/components/section-heading";
 import { siteConfig } from "@/lib/data";
+
+const workGallery = [
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_0022-Edit.jpg", alt: "Portrait session" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_9364-Edit.jpg", alt: "Wedding portraits" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_0736.jpg", alt: "Event photography" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_2616.jpg", alt: "Portrait session" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_1224.jpg", alt: "Wedding photography" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_5716.jpg", alt: "Event coverage" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_4659-Edit.jpg", alt: "Portrait photography" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_1578.jpg", alt: "Wedding ceremony" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_7395.jpg", alt: "Portrait session" },
+];
+
+const sidebarGallery = [
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_8503.jpg", alt: "Portrait photography" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_1343.jpg", alt: "Wedding portraits" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_0910.jpg", alt: "Event photography" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_9872.jpg", alt: "Portrait session" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_6248.jpg", alt: "Wedding ceremony" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_6015.jpg", alt: "Event coverage" },
+];
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -88,8 +111,54 @@ export default function ContactPage() {
                     <InstagramIcon className="w-5 h-5" />
                   </Link>
                 </div>
+
+                <div className="pt-4">
+                  <p className="section-label mb-3">From the Gallery</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {sidebarGallery.map((img) => (
+                      <div key={img.src} className="relative aspect-square overflow-hidden rounded-md">
+                        <Image
+                          src={img.src}
+                          alt={img.alt}
+                          fill
+                          className="object-cover object-top"
+                          sizes="(max-width: 768px) 30vw, 15vw"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Work Gallery */}
+      <section className="py-20 bg-cream">
+        <div className="max-w-7xl mx-auto px-6">
+          <SectionHeading label="A Taste of Our Work" title="Recent Captures" />
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12">
+            {workGallery.map((img) => (
+              <div
+                key={img.src}
+                className="relative aspect-square overflow-hidden rounded-md group"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-brown-dark/0 group-hover:bg-brown-dark/20 transition-colors duration-300" />
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <Link href="/portfolio" className="btn-outline inline-block">
+              See Full Portfolio
+            </Link>
           </div>
         </div>
       </section>
