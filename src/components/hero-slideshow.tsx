@@ -37,7 +37,7 @@ export default function HeroSlideshow() {
             src={img.src}
             alt={img.alt}
             fill
-            className="object-cover object-top"
+            className="object-cover object-[50%_25%]"
             priority={i === 0}
             sizes="100vw"
           />

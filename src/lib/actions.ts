@@ -12,13 +12,22 @@ export async function submitInquiry(
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const phone = formData.get("phone") as string;
+  const preferredContact = formData.get("preferredContact") as string;
   const service = formData.get("service") as string;
   const date = formData.get("date") as string;
+  const hearAbout = formData.get("hearAbout") as string;
+  const referralName = formData.get("referralName") as string;
+  const details = formData.get("details") as string;
   const message = formData.get("message") as string;
 
   if (!name || !email || !message) {
     return { success: false, message: "Please fill in all required fields." };
   }
+
+  const hearAboutLine =
+    hearAbout === "Referral" && referralName
+      ? `How they heard: Referral (from ${referralName})`
+      : `How they heard: ${hearAbout || "Not specified"}`;
 
   try {
     if (process.env.RESEND_API_KEY) {
@@ -33,13 +42,27 @@ export async function submitInquiry(
           `Name: ${name}`,
           `Email: ${email}`,
           `Phone: ${phone || "Not provided"}`,
+          `Preferred Contact: ${preferredContact || "Not specified"}`,
           `Service: ${service || "Not specified"}`,
           `Preferred Date: ${date || "Not specified"}`,
+          hearAboutLine,
+          `\nDetails:\n${details || "Not provided"}`,
           `\nMessage:\n${message}`,
         ].join("\n"),
       });
     } else {
-      console.log("Contact form submission:", { name, email, phone, service, date, message });
+      console.log("Contact form submission:", {
+        name,
+        email,
+        phone,
+        preferredContact,
+        service,
+        date,
+        hearAbout,
+        referralName,
+        details,
+        message,
+      });
     }
 
     return { success: true, message: "Thank you! Your inquiry has been sent. We'll be in touch soon." };
