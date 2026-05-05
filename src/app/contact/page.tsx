@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageBanner from "@/components/page-banner";
-import ContactForm from "@/components/contact-form";
+import StudioNinjaForm from "@/components/studio-ninja-form";
 import FaqAccordion from "@/components/faq-accordion";
 import SectionHeading from "@/components/section-heading";
 import { siteConfig } from "@/lib/data";
@@ -26,6 +26,9 @@ const sidebarGallery = [
   { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_9872.jpg", alt: "Portrait session" },
   { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_6248.jpg", alt: "Wedding ceremony" },
   { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_6015.jpg", alt: "Event coverage" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_2386.jpg", alt: "Portrait session" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_5934.jpg", alt: "Wedding reception" },
+  { src: "https://irp.cdn-website.com/fe9bd626/dms3rep/multi/IMG_8021.jpg", alt: "Event coverage" },
 ];
 
 function FacebookIcon({ className }: { className?: string }) {
@@ -60,7 +63,7 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>
-              <ContactForm />
+              <StudioNinjaForm />
             </div>
 
             <div className="bg-tan rounded-md p-8">
